@@ -1,0 +1,67 @@
+﻿@model Layers.Models.SessionVM
+<style>
+    pre {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        overflow: auto;
+        overflow-y: hidden;
+        font-size: 12px;
+        line-height: 20px;
+        background: #efefef;
+        border: 0px solid #777;
+        background: url(lines.png) repeat 0 0;
+    }
+</style>
+
+
+@if (Model != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Commentary)
+            </th>
+            <th></th>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.WorkTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.EndTime)
+            </td>
+            <td>
+                <pre>@Model.Commentary</pre>
+                @*@Html.DisplayFor(modelItem => Model.Commentary)*@
+            </td>
+        </tr>
+    </table>
+}
+
+

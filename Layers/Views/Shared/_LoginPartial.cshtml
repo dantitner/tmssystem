@@ -1,0 +1,17 @@
+﻿@{
+    var name = Session["Name"];
+}
+<div class="navbar-brand navbar-right">
+    @if (name == null)
+    {<div style="font-size:small">
+            @Html.ActionLink("Регистрация", "Register", "Account")
+            @Html.ActionLink("Вход", "Login", "Account")
+        </div>
+    }
+    else
+    {
+        <div style="font-size:small">
+            @name @Html.ActionLink("Выход", "Logoff", "Account")
+        </div>
+    }
+</div>

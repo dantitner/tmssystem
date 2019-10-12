@@ -1,0 +1,59 @@
+﻿@model Layers.Models.CompanyVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Подробнее о компании</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    @if (Model.Creator.Id == (int)Session["Id"])
+    {
+        <h4>Пароль вступления в компанию: @Model.EnteringPassword</h4>
+    }
+    <hr />
+    @if (Model.Users.Count != 0)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <table>
+                <tr>
+                    <th>
+                        Имя сотрудника
+                    </th>
+                    <th>
+                        E-Mail
+                    </th>
+                </tr>
+                @foreach (var item in Model.Users)
+                {
+                    <tr>
+                        <td>
+                            @item.Name
+                        </td>
+
+                        <td>
+                            @item.Email
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dl>
+    }
+    else
+    {
+        <h4>В вашей компании пока нет сотрудников</h4>
+    }
+
+</div>
+<p>
+    @Html.ActionLink("Назад", "Index", "TMS")
+</p>

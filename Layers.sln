@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Layers", "Layers\Layers.csproj", "{55655E2A-A2FB-4150-8F4F-986DE8BB0B6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayersDAL", "LayersDAL\LayersDAL.csproj", "{C0C96A07-ADC9-4A64-A225-DA1A074ACDD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayersBLL", "LayersBLL\LayersBLL.csproj", "{E8C9A614-8BCA-45BE-97B0-D4263C58BE71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55655E2A-A2FB-4150-8F4F-986DE8BB0B6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55655E2A-A2FB-4150-8F4F-986DE8BB0B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55655E2A-A2FB-4150-8F4F-986DE8BB0B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55655E2A-A2FB-4150-8F4F-986DE8BB0B6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0C96A07-ADC9-4A64-A225-DA1A074ACDD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0C96A07-ADC9-4A64-A225-DA1A074ACDD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0C96A07-ADC9-4A64-A225-DA1A074ACDD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0C96A07-ADC9-4A64-A225-DA1A074ACDD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8C9A614-8BCA-45BE-97B0-D4263C58BE71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8C9A614-8BCA-45BE-97B0-D4263C58BE71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8C9A614-8BCA-45BE-97B0-D4263C58BE71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8C9A614-8BCA-45BE-97B0-D4263C58BE71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

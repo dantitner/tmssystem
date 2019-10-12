@@ -1,0 +1,26 @@
+﻿@model Layers.Models.LoginModel
+@{
+    ViewBag.Title = "Вход";
+}
+<h2>Вход</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <p>
+        @Html.LabelFor(model => model.Login) <br />
+        @Html.EditorFor(model => model.Login)
+        @Html.ValidationMessageFor(model =>
+        model.Login)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Password)<br />
+        @Html.EditorFor(model => model.Password)
+        @Html.ValidationMessageFor(model =>
+        model.Password)
+    </p>
+    <p>
+        <input type="submit" value="Войти"
+               class="btn btn-default" />
+    </p>
+}

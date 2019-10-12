@@ -1,0 +1,32 @@
+﻿@model Layers.Models.RegisterModel
+@{ ViewBag.Title = "Регистрация"; }
+<h2>Регистрация</h2>
+@using (Html.BeginForm())
+{@Html.AntiForgeryToken()
+@Html.ValidationSummary(true) <p>
+    @Html.LabelFor(model => model.Name) <br />
+    @Html.EditorFor(model => model.Name)
+    @Html.ValidationMessageFor(model => model.Name)
+</p>
+<p>
+    @Html.LabelFor(model => model.Login)
+    <br /> @Html.EditorFor(model => model.Login)
+    @Html.ValidationMessageFor(model =>
+    model.Login)
+</p>
+<p>
+    @Html.LabelFor(model => model.Password)<br />
+    @Html.EditorFor(model => model.Password)
+    @Html.ValidationMessageFor(model => model.Password)
+</p>
+<p>
+    @Html.LabelFor(model => model.ConfirmPassword)<br />
+    @Html.EditorFor(model => model.ConfirmPassword)
+    @Html.ValidationMessageFor(model =>
+    model.ConfirmPassword)
+</p>
+<p>
+    <input type="submit" value="Зарегистрировать"
+           class="btn btn-default" />
+</p>
+}

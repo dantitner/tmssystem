@@ -1,0 +1,133 @@
+﻿@model Layers.Models.UserVM
+@using Layers.Models
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    var name = Session["Name"];
+    CompanyVM employedComp = ViewBag.employedComp;
+    List<CompanyVM> createdComp = ViewBag.createdComp;
+}
+
+<h2>Здравствуй, @name</h2>
+
+
+@using (Html.BeginForm())
+{
+    <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+    <dd> @Html.DisplayFor(model => model.Name)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.Login)</dt>
+    <dd> @Html.DisplayFor(model => model.Login)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+    <dd> @Html.DisplayFor(model => model.Email)</dd>
+
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Company")'">Создать компанию</button>
+
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Enter", "Company")'">Вступить в копанию</button>
+    
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Account")'">Настройки профиля</button>
+
+    if (createdComp.Count > 0)
+    {
+        <dt>Созданные Компании</dt>
+        <table class="table">
+            <tr>
+                <th>
+                    Название Компании
+                </th>
+                <th>
+                    Работники
+                </th>
+                <th>
+
+                </th>
+            </tr>
+
+            @foreach (var item in createdComp)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <th>
+                                    Имя сотрудника
+                                </th>
+                                <th>
+                                    E-Mail
+                                </th>
+                                <th>
+                                    
+                                </th>
+                            </tr>
+                            @foreach (var employee in item.Users)
+                            {
+                            <tr>
+                                <td>
+                                    @employee.Name
+                                </td>
+                                <td>
+                                    @employee.Email
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Отчет", "Report", "Session", new { userId = employee.Id, companyId = item.Id }, null)
+                                </td>
+                            </tr>
+                            }
+                        </table>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Редактировать", "EditCompany", "Company", new { id = item.Id }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <dt>Вы еще не создали компанию</dt>
+    }
+
+    if (employedComp != null)
+    {
+        <dt>Компания в которой вы устроены</dt>
+
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Session",new { page = 1, id = Model.Id }, null)'">Продолжить Работу</button>
+
+        <table class="table">
+            <tr>
+                <th>
+                    Название Компании
+                </th>
+                <th>
+                    Количество времени
+                </th>
+                <th>
+                    @*Редактировать*@
+                </th>
+            </tr>
+
+            <tr>
+                <td>
+                    @employedComp.Name
+                </td>
+                <td>
+                    8 часов
+                </td>
+                <td>
+                    @Html.ActionLink("О компании", "Details", "Company", new { id = employedComp.Id }, null)
+                </td>
+            </tr>
+        </table>
+    }
+    else
+    {
+        <dt>Вы нигде не устроены</dt>
+    }
+
+
+}

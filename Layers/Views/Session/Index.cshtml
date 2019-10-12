@@ -1,0 +1,139 @@
+﻿@model PagedList.IPagedList<Layers.Models.SessionVM>
+@using PagedList.Mvc;
+
+<style>
+    .oml4 {
+        margin: 0;
+        padding: 0;
+        display: none;
+    }
+
+    .oml5 {
+        margin: 0;
+        padding: 0;
+        display: none;
+    }
+
+    .oml6 {
+        margin: 0;
+        padding: 0;
+        display: none;
+    }
+</style>
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Список Сессий</h2>
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Session")'">Создать Сессию</button>
+@if (Model.Count == 0)
+{
+    <p>У вас нет сессий.</p>
+}
+@if (Model.Count>0)
+{
+    <div>
+
+        <div id="results1">
+            @Html.Partial("ListSessions", Model[0])
+        </div>
+        <div class="oml4">
+            <p>Сохранив изменения вы не сможете поменять время окончания работы.</p>
+            @using (Ajax.BeginForm("Update", new AjaxOptions { UpdateTargetId = "results1" }))
+            {
+                <input type="hidden" name="Id" value=@Model[0].Id />
+                <p>Ваш комментарий:</p>
+                <input type="text" name="Commentary" value=@Model[0].Commentary size="60" />
+                <input type="submit" value="Сохранить" />
+            }
+        </div>
+
+        <button class="sozo">Редактировать</button>
+        <br />
+    </div>
+}
+@if (Model.Count > 1)
+{
+    <div>
+
+        <div id="results2">
+            @Html.Partial("ListSessions", Model[1])
+        </div>
+
+        <div class="oml5">
+            <p>Сохранив изменения вы не сможете поменять время окончания работы.</p>
+            @using (Ajax.BeginForm("Update", new AjaxOptions { UpdateTargetId = "results2" }))
+            {
+                <input type="hidden" name="Id" value=@Model[1].Id />
+                <p>Ваш комментарий:</p>
+                <input type="text" name="Commentary" value=@Model[1].Commentary size="60" />
+                <input type="submit" value="Сохранить" />
+            }
+        </div>
+        <button class="sozo2">Редактировать</button>
+    </div>
+    <br/>
+}
+
+@if(Model.Count > 2)
+{
+    <div>
+        <div id="results3">
+            @Html.Partial("ListSessions", Model[2])
+        </div>
+
+        <div class="oml6">
+            <p>Сохранив изменения вы не сможете поменять время окончания работы.</p>
+            @using (Ajax.BeginForm("Update", new AjaxOptions { UpdateTargetId = "results3" }))
+            {
+                <input type="hidden" name="Id" value=@Model[2].Id />
+                <p>Ваш комментарий:</p>
+                <input type="text" name="Commentary" value=@Model[2].Commentary size="60" />
+                <input type="submit" value="Сохранить" />
+            }
+        </div>
+        <button class="sozo3">Редактировать</button>
+        <br />
+    </div>
+}
+<br />
+    Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+   
+ <script>
+        $('.sozo3').click(function () {
+            if (document.querySelector('.oml6').style.display == "block") {
+                $(".oml6").slideUp('slow');
+                $('.sozo3').text('Редактировать');
+            }
+            else {
+                $(".oml6").slideDown('slow');
+                $('.sozo3').text('Скрыть');
+            }
+        });
+        $('.sozo2').click(function () {
+            if (document.querySelector('.oml5').style.display == "block") {
+                $(".oml5").slideUp('slow');
+                $('.sozo2').text('Редактировать');
+            }
+            else {
+                $(".oml5").slideDown('slow');
+                $('.sozo2').text('Скрыть');
+            }
+        });
+        $('.sozo').click(function () {
+            if (document.querySelector('.oml4').style.display == "block") {
+                $(".oml4").slideUp('slow');
+                $('.sozo').text('Редактировать');
+            }
+            else {
+                $(".oml4").slideDown('slow');
+                $('.sozo').text('Скрыть');
+            }
+        });
+    </script>

@@ -1,0 +1,38 @@
+﻿@model Layers.Models.EnterCompanyVM
+
+@{
+    ViewBag.Title = "Enter";
+}
+<h2>Вступить в компанию</h2>
+@if (ViewBag.msg != null)
+{
+    @Html.Label((string)ViewBag.msg)
+}
+
+@if (Model.AlreadyEmployed)
+{
+    <h4>Вы уже устроены</h4>
+}
+else
+{
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <p>
+            @Html.LabelFor(model => model.Companies) <br />
+            @Html.DropDownList("Companies", Model.Companies as SelectList, new { id = "Companies" })
+        </p>
+        <p>
+
+            @Html.LabelFor(model => model.EnteringPassword)<br />
+            <input id="enteringPassword" name="enteringPassword" type="password" />
+        </p>
+        <p>
+            <input type="submit" value="Войти"
+                   class="btn btn-default" />
+        </p>
+    }
+
+}
+

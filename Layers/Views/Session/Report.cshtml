@@ -1,0 +1,48 @@
+﻿@model Layers.Models.Result
+@{
+    ViewBag.Title = "Report";
+}
+<style>
+    .buttons form {
+        display: inline;
+    }
+</style>
+
+<h2>Отчет</h2>
+<div class="buttons">
+
+    @using (Ajax.BeginForm("ResultPartial", new AjaxOptions { UpdateTargetId = "results1" }))
+    {
+        @Html.Hidden("StartDate", DateTime.Now.AddDays(-7));
+        @Html.Hidden("EndDate", DateTime.Now);
+        @Html.Hidden("UserID", Model.UserId);
+        @Html.Hidden("CompanyId", Model.CompanyId);
+        <input type="submit" value="За неделю" />
+    }
+    @using (Ajax.BeginForm("ResultPartial", new AjaxOptions { UpdateTargetId = "results1" }))
+    {
+        @Html.Hidden("StartDate", DateTime.Now.AddDays(-30));
+        @Html.Hidden("EndDate", DateTime.Now);
+        @Html.Hidden("UserID", Model.UserId);
+        @Html.Hidden("CompanyId", Model.CompanyId);
+        <input type="submit" value="За 30 дней" />
+    }
+
+    @using (Ajax.BeginForm("ResultPartial", new AjaxOptions { UpdateTargetId = "results1" }))
+    {
+
+        @Html.Label("От:");
+        <input id="StartDate" name="StartDate" type="datetime-local" value=@DateTime.Now>
+
+        @Html.Label("До:");
+        <input id="EndDate" name="EndDate" type="datetime-local" value=@DateTime.Now>
+
+
+        @Html.Hidden("UserID", Model.UserId);
+        @Html.Hidden("CompanyId", Model.CompanyId);
+        <input type="submit" value="Вывести" />
+    }
+</div>
+<div id="results1"></div>
+
+
